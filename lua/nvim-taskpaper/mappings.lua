@@ -14,26 +14,24 @@ function M.setup(bufnr)
         return
     end
 
-    -- Register which-key descriptions
+    -- Register which-key descriptions (which-key.nvim v3+ API)
     local ok, wk = pcall(require, "which-key")
     if ok then
-        wk.register({
-            ["<leader>t"] = {
-                name = "TaskPaper",
-                ["."] = { "Fold Notes" },
-                ["P"] = { "Focus Project" },
-                ["j"] = { "Next Project" },
-                ["k"] = { "Previous Project" },
-                ["g"] = { "Go to Project" },
-                ["/"] = { "Search Keyword" },
-                ["s"] = { "Search Tag" },
-                ["d"] = { "Toggle Done" },
-                ["t"] = { "Toggle Today" },
-                ["x"] = { "Toggle Cancelled" },
-                ["D"] = { "Archive Done" },
-                ["T"] = { "Show Today" },
-                ["X"] = { "Show Cancelled" },
-            }
+        wk.add({
+            { "<leader>t", group = "TaskPaper", buffer = bufnr },
+            { "<leader>t.", desc = "Fold Notes", buffer = bufnr },
+            { "<leader>tP", desc = "Focus Project", buffer = bufnr },
+            { "<leader>tj", desc = "Next Project", buffer = bufnr },
+            { "<leader>tk", desc = "Previous Project", buffer = bufnr },
+            { "<leader>tg", desc = "Go to Project", buffer = bufnr },
+            { "<leader>t/", desc = "Search Keyword", buffer = bufnr },
+            { "<leader>ts", desc = "Search Tag", buffer = bufnr },
+            { "<leader>td", desc = "Toggle Done", buffer = bufnr },
+            { "<leader>tt", desc = "Toggle Today", buffer = bufnr },
+            { "<leader>tx", desc = "Toggle Cancelled", buffer = bufnr },
+            { "<leader>tD", desc = "Archive Done", buffer = bufnr },
+            { "<leader>tT", desc = "Show Today", buffer = bufnr },
+            { "<leader>tX", desc = "Show Cancelled", buffer = bufnr },
         })
     end
 
