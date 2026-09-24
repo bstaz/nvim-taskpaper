@@ -107,18 +107,17 @@ function M.go_to_project()
                 return
             end
 
-            local line_number = project_info[project_name].line
-            
-            -- Verify line number
-            if line_number > 0 and line_number <= vim.fn.line('$') then
-                vim.api.nvim_win_set_cursor(0, {line_number, 0})
-                vim.cmd('normal! zz')
-                
-                local info = project_info[project_name]
-                vim.notify(string.format("Jumped to '%s'", project_name))
-            else
-                vim.notify("Could not locate project position")
-            end
+            vim.schedule(function()
+                local line_number = project_info[project_name].line
+
+                if line_number > 0 and line_number <= vim.fn.line('$') then
+                    vim.api.nvim_win_set_cursor(0, {line_number, 0})
+                    vim.cmd('normal! zz')
+                    vim.notify(string.format("Jumped to '%s'", project_name))
+                else
+                    vim.notify("Could not locate project position")
+                end
+            end)
         end
     end)
 end
