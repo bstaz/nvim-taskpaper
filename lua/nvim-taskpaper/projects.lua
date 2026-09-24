@@ -115,16 +115,9 @@ function M.go_to_project()
                 vim.cmd('normal! zz')
                 
                 local info = project_info[project_name]
-                print(string.format(
-                    "Jumped to '%s' (%d/%d tasks completed%s%s)",
-                    project_name,
-                    info.done_count,
-                    info.task_count,
-                    info.has_urgent and ", has urgent tasks" or "",
-                    info.has_today and ", has today tasks" or ""
-                ))
+                vim.notify(string.format("Jumped to '%s'", project_name))
             else
-                print("Could not locate project position")
+                vim.notify("Could not locate project position")
             end
         end
     end)
