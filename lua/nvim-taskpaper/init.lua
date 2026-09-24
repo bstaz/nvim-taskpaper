@@ -20,7 +20,7 @@ function M.setup(opts)
     vim.g.task_paper_search_hide_done = opts.search_hide_done or 0
     
     -- Set up autocmd for filetype detection
-    vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+    vim.api.nvim_create_autocmd({"BufRead", "BufNewFile", "BufWinEnter"}, {
         pattern = {"*.taskpaper"},
         callback = function(ev)
             if vim.b[ev.buf].did_ftplugin then
