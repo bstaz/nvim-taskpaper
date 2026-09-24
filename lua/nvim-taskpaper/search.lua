@@ -11,7 +11,7 @@ function M.search_keyword()
     -- Prompt for keyword search
     local keyword = vim.fn.input("Search keyword: ")
     if keyword ~= "" then
-        vim.cmd("normal! /" .. keyword .. "\\c\\<CR>")
+        vim.fn.search("\\c" .. keyword)
     end
 end
 
@@ -22,7 +22,7 @@ function M.search_tag()
         if not tag:match("^@") then
             tag = "@" .. tag
         end
-        vim.cmd("normal! /" .. tag .. "\\c\\<CR>")
+        vim.fn.search("\\c" .. tag)
     end
 end
 

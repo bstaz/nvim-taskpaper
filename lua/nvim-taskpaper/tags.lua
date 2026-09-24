@@ -38,7 +38,7 @@ function M.toggle_cancelled()
 end
 
 function M.show_tag(tag)
-    vim.cmd("normal! /@" .. tag .. "\\c\\<CR>")
+    vim.fn.search("\\c@" .. tag)
 end
 
 function M.show_today()
